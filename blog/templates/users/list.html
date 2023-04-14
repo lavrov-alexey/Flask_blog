@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {#если нужно не заменить целиком, а дополнить блок шаблона - вызываем super()#}
+    {#    {{ super() }}#}
+    User list
+{% endblock %}
+
+{% block body %}
+    {#  выведем переданных из вьюхи пользователей списком через цикл  #}
+    {% for user in users %}
+        <ul>
+            <li> {{ user }} </li>
+        </ul>
+    {% endfor %}
+{% endblock %}

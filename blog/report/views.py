@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-report = Blueprint('report', __name__, url_prefix='reports', static_folder='../static')
+report = Blueprint('report', __name__, url_prefix='/reports', static_folder='../static')
 
 
 @report.route('/')
