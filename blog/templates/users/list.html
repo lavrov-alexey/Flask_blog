@@ -7,10 +7,15 @@
 {% endblock %}
 
 {% block body %}
+    <h1>Users:</h1>
     {#  выведем переданных из вьюхи пользователей списком через цикл  #}
-    {% for user in users %}
+    {% for user_id in users %}
         <ul>
-            <li> {{ user }} </li>
+            {# вариант простого вывода списка данных #}
+{#            <li> {{ users[user_id] }} </li>#}
+            {# вариант вывода списка данных с динамическими ссылками на каждый элемент с функцией url_for() #}
+            {# Например - http://127.0.0.1:5000/users/1 #}
+            <li> <a href="{{ url_for('user.get_user', pk=user_id) }}">{{ users[user_id] }}</a> </li>
         </ul>
     {% endfor %}
 {% endblock %}
