@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {#если нужно не заменить целиком, а дополнить блок шаблона - вызываем super()#}
+    {#    {{ super() }}#}
+    Reports list
+{% endblock %}
+
+{% block body %}
+    <h1>Reports:</h1>
+    <div class="container text">
+    <div class="row">
+        <div class="col">
+            {#  выведем переданных из вьюхи отчеты списком через цикл  #}
+            {% for report_id in reports %}
+                <ul>
+                    <li>{{ report_id }}</li>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
