@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {#если нужно не заменить целиком, а дополнить блок шаблона - вызываем super()#}
+    {#    {{ super() }}#}
+    Список статей
+{% endblock %}
+
+{% block body %}
+    <h1>Статьи:</h1>
+    <div class="container text">
+        <div class="row">
+            <div class="col">
+                {#  выведем переданных из вьюхи статьи списком через цикл  #}
+                {% for article_id in articles %}
+                    <ul>
+                        <li>
+                            <a href="{{ url_for('article.get_article', pk=article_id) }}">
+                                {{ articles[article_id]['title'] }} </a>
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
