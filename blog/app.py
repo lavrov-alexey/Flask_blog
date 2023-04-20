@@ -26,8 +26,6 @@ def create_app() -> Flask:
     # инициализируем в Алхимии наше приложение
     db.init_app(app)
 
-    # from .models import User
-
     register_blueprints(app)
     return app
 
