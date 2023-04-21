@@ -26,7 +26,10 @@ def create_app() -> Flask:
     # инициализируем в Алхимии наше приложение
     db.init_app(app)
 
+    from .models import User, Article
+
     register_blueprints(app)
+
     return app
 
 # создаем функцию для регистрации блюпринтов (эскизов), на вход - приложение (экземпляр Flask)
