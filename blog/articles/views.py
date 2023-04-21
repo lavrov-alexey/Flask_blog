@@ -45,7 +45,7 @@ def get_article(pk: int):
     try:
         article = ARTICLES[pk]
         author_pk = article['author']
-    except KeyError:
+    excepbasht KeyError:
         return redirect('/articles/')
     return render_template(
         'articles/details.html',
