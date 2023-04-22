@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {#если нужно не заменить целиком, а дополнить блок шаблона - вызываем super()#}
+    {#    {{ super() }}#}
+    Login page
+{% endblock %}
+
+{% block body %}
+    <h1>Страница входа:</h1>
+    <div class="container text">
+        <div class="row">
+            <div class="col">
+
+                {# получаем проброшенные из бека сообщения #}
+                {% with messages = get_flashed_messages() %}
+                    {# если есть сообщения, то показываем их в блоке, у нас только одно #}
+                    {% if messages %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ messages[0] }}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                {# По нажатию кнопки отправляем методом post данные в наше приложение авторизации #}
+                <form class="row g-3  mt-3" method="post" action="{{ url_for('auth.login') }}">
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        {# По заданному в поле name названию - будем получать данные из формы в приложении авториз. #}
+                        <input type="email" class="form-control" id="email" name="email"
+                               placeholder="name@example.com">
+                    </div>
+
+                    <label for="password" class="form-label">Password</label>
+                    {# По заданному в поле name названию - будем получать данные из формы в приложении авториз. #}
+                    <input type="password" id="password" class="form-control" name="password"
+                           aria-labelledby="passwordHelpBlock" placeholder="your password">
+                    <div id="passwordHelpBlock" class="form-text">
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain
+                        spaces, special characters, or emoji.
+                    </div>
+
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-3">Подтвердить</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

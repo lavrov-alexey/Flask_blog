@@ -30,7 +30,9 @@ def create_users():
     hash_password = generate_password_hash('1qaz2wsx')
     # создаем экземпляр пользователя
     test_user = User(email='test@email.com', password=hash_password)
+    test_admin = User(email='admin@email.com', password=hash_password, is_staff=True)
     db.session.add(test_user)  # добавляем нашего пользователя
+    db.session.add(test_admin)  # добавляем нашего пользователя
     db.session.commit()  # и применяем изменения в нашей сессии
 
-    print('Created test_user!')
+    print('Created test users!')
