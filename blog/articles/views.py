@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, redirect
+from flask_login import login_required
 
-from blog.user.views import USERS
+# from blog.user.views import USERS
 
 article = Blueprint('article', __name__, url_prefix='/articles', static_folder='../static')
 
@@ -16,17 +17,17 @@ ARTICLES = {
         'text': 'Текст статьи-2. Текст статьи-2.Текст статьи-2.Текст статьи-2.Текст статьи-2'
     },
     3: {
-        'author': 2,
+        'author': 1,
         'title': 'Заголовок статьи-3',
         'text': 'Текст статьи-3. Текст статьи-3.Текст статьи-3.Текст статьи-3.Текст статьи-3'
     },
     4: {
-        'author': 2,
+        'author': 1,
         'title': 'Заголовок статьи-4',
         'text': 'Текст статьи-4. Текст статьи-4.Текст статьи-4.Текст статьи-4.Текст статьи-4'
     },
     5: {
-        'author': 3,
+        'author': 1,
         'title': 'Заголовок статьи-5',
         'text': 'Текст статьи-5. Текст статьи-5.Текст статьи-5.Текст статьи-5.Текст статьи-5'
     },
@@ -40,6 +41,7 @@ def article_list():
     )
 
 @article.route('/<int:pk>')
+@login_required
 def get_article(pk: int):
     # обработака варианта несуществующего id
     try:

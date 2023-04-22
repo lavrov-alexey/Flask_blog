@@ -1,40 +1,33 @@
-from flask import Blueprint, render_template, redirect
+from flask import Blueprint, render_template
+from flask_login import login_required
 from werkzeug.exceptions import NotFound
+
 
 # создаем эскиз user, параметр url_prefix позволит обратиться к url "localhost/users"
 user = Blueprint('user', __name__, url_prefix='/users', static_folder='../static')
-
-# Пока не работаем с БД - создадим глобальную константу с данными о пользователях
-# USERS = ['Иван', 'Мария', 'Владимир']  # вариант простого списка
-# вариант имитации объекта с id (pk)
-USERS = {
-    1: 'Иван',
-    2: 'Мария',
-    3: 'Владимир',
-}
-
 
 # регистрируем роут в созданном ранее блюпринте юзер, т.е. обращение будет к корню
 # урла "localhost/users/"
 @user.route('/')
 def user_list():
+    from blog.models import User
+
+    users_from_db = User.query.all()
     # вызываем функцию отрисовки шаблона и передаем в контекст шаблона наших пользователей, чтобы исп-вать в шаблоне
     return render_template(
         'users/list.html',
-        users=USERS,
+        users=users_from_db,
     )
 
 @user.route('/<int:pk>')
-def get_user(pk: int):
-    # обработка варианта передачи несуществующего id
-    try:
-        user_name = USERS[pk]
-    except KeyError:
-        # вариант с обработкой и отображением ошибки
-        # raise NotFound(f'User id {pk} not found!')
-        # вариант с перенаправлением польвателя например на список пользователей
-        return redirect('/users/')
+@login_required
+def profile(pk: int):
+    from blog.models import User
+
+    user_from_db = User.query.filter_by(id=pk).one_or_none()
+    if not user_from_db:
+        raise NotFound(f"Пользователя #{pk} не существует!")
     return render_template(
-        'users/details.html',
-        user_name=user_name,
+        'users/profile.html',
+        user=user_from_db,
     )

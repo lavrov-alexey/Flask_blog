@@ -1,18 +1,27 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <div class="navbar-brand">Меню:</div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('user.user_list') }}">Пользователи</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('article.article_list') }}">Статьи</a>
-        </li>
-      </ul>
+    <div class="container-fluid">
+        <div class="navbar-brand">Меню:</div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('user.user_list') }}">Пользователи</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('article.article_list') }}">Статьи</a>
+                </li>
+
+                {# При использовании flask-login мы имеем сущность current_user, если пользователь авторизован #}
+                {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('auth.logout') }}">Выйти ({{ current_user.email }})</a>
+                    </li>
+                {% endif %}
+
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
