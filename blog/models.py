@@ -1,10 +1,11 @@
+from flask_login import UserMixin
 from sqlalchemy.orm import relationship
 
 from blog.app import db
 
 
 # импортируем экземпляр Алхимии из осн. нашего приложения и наследуясь от ее базовой модели - описываем свою модель
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)

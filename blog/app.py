@@ -1,11 +1,11 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
+from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 
-from blog.articles.views import article
-from blog.auth.views import auth
-from blog.user.views import user
 
 db = SQLAlchemy()  # создаем экземпляр Алхимии
+login_manager = LoginManager()  # создаем экземпляр логин-менеджера
+
 
 # создаем в функции приложение Flask (передав имя выполняемого модуля)  и возвращаем его экземпляр
 # используем паттерн "Фабрика по созданию приложений"
@@ -27,14 +27,29 @@ def create_app() -> Flask:
     # инициализируем в Алхимии наше приложение
     db.init_app(app)
 
+    login_manager.login_view = 'auth.login'  # задаем вьюху для логина
+    login_manager.init_app(app)
+
     from .models import User, Article
 
-    register_blueprints(app)
+    @login_manager.user_loader
+    def load_user(user_id):
+        User.query.get(int(user_id))
 
+    # @login_manager.unauthorized_handler
+    # def unauthorized():
+    #     return redirect(url_for('auth.login'))
+
+    register_blueprints(app)
     return app
+
 
 # создаем функцию для регистрации блюпринтов (эскизов), на вход - приложение (экземпляр Flask)
 def register_blueprints(app: Flask):
+    from blog.articles.views import article
+    from blog.auth.views import auth
+    from blog.user.views import user
+
     # вызываем для переданного приложения станд. функцию регистрации блюпринт, передав в нее имя блюпринта
     app.register_blueprint(user)
     app.register_blueprint(article)

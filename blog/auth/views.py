@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask_login import logout_user, login_user, login_required
 from werkzeug.security import check_password_hash
 
 auth = Blueprint('auth', __name__, static_folder='../static')
@@ -25,9 +26,12 @@ def login():
         flash('Введённые данные авторизации некорректны!')
         return redirect(url_for('.login'))
 
+    login_user(user_from_db)
     return redirect(url_for('user.profile', pk=user_from_db.id))
 
 
 @auth.route('/logout')
+@login_required
 def logout():
-    return '666'
+    logout_user()
+    return redirect(url_for('.login'))

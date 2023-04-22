@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="819f6b72-22d9-46a6-8631-03d299b67f92" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/blog/auth/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/auth/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/templates/auth/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/articles/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/articles/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/users/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/users/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/auth/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/auth/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/users/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/users/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/user/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/wsgi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +129,7 @@
       <workItem from="1681545977822" duration="14954000" />
       <workItem from="1681837250633" duration="7679000" />
       <workItem from="1682011030624" duration="10294000" />
-      <workItem from="1682138591442" duration="7146000" />
+      <workItem from="1682138591442" duration="14225000" />
     </task>
     <servers />
   </component>
@@ -140,7 +138,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/flask_blog$app.coverage" NAME="app Coverage Results" MODIFIED="1681363920738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/blog" />
-    <SUITE FILE_PATH="coverage/flask_blog$Flask__wsgi_.coverage" NAME="Flask (wsgi) Coverage Results" MODIFIED="1682145746399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/flask_blog$Flask__wsgi_.coverage" NAME="Flask (wsgi) Coverage Results" MODIFIED="1682154201476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/flask_blog$wsgi.coverage" NAME="wsgi Coverage Results" MODIFIED="1681414731033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/flask_blog$flask_blog.coverage" NAME="flask_blog Coverage Results" MODIFIED="1682139753390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>

@@ -1,5 +1,7 @@
-from flask import Blueprint, render_template, redirect
+from flask import Blueprint, render_template
+from flask_login import login_required
 from werkzeug.exceptions import NotFound
+
 
 # создаем эскиз user, параметр url_prefix позволит обратиться к url "localhost/users"
 user = Blueprint('user', __name__, url_prefix='/users', static_folder='../static')
@@ -18,13 +20,14 @@ def user_list():
     )
 
 @user.route('/<int:pk>')
+@login_required
 def profile(pk: int):
     from blog.models import User
 
-    _user = User.query.filter_by(id=pk).one_or_none()
-    if not _user:
+    user_from_db = User.query.filter_by(id=pk).one_or_none()
+    if not user_from_db:
         raise NotFound(f"Пользователя #{pk} не существует!")
     return render_template(
         'users/profile.html',
-        user=_user,
+        user=user_from_db,
     )

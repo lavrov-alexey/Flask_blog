@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, redirect
+from flask_login import login_required
 
 # from blog.user.views import USERS
 
@@ -40,6 +41,7 @@ def article_list():
     )
 
 @article.route('/<int:pk>')
+@login_required
 def get_article(pk: int):
     # обработака варианта несуществующего id
     try:

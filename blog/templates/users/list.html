@@ -17,7 +17,7 @@
                     {# вариант вывода списка данных с динамическими ссылками на каждый элемент с функцией url_for() #}
                     {# Например - http://127.0.0.1:5000/users/1 #}
                     <li>
-                        <a href="{{ url_for('user.get_user', pk=user.id) }}">{{ user.email }}</a>
+                        <a href="{{ url_for('user.profile', pk=user.id) }}">{{ user.email }}</a>
                     </li>
                 </ul>
             {% endfor %}
